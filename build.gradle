@@ -1,10 +1,10 @@
 buildscript {
     repositories {
-        jcenter()
         maven { url = "http://files.minecraftforge.net/maven" }
+        mavenCentral() // central repo with fixed forgegradle version
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'com.anatawa12.forge:ForgeGradle:2.3-1.0.7' // jomang obliterated http requests so original forgegradle :getAssets task is broken :(
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -35,18 +35,16 @@ minecraft {
 }
 
 repositories {
+    // progwml6 repo is dead, blamejared timed out idk, this one works :)
     maven {
-        url "http://dvs1.progwml6.com/files/maven"
-    }
-    maven {
-        url 'http://maven.blamejared.com'
+        url 'https://modmaven.dev'
     }
 }
 
 dependencies {
 	
-    deobfCompile "mezz.jei:jei_1.12.2:+"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.+"
+    deobfCompile "mezz.jei:jei_1.12.2:4.16.1.301" // using fixed version instead of latest cuz latest verion doesnt work for sum reason so using fixed stable release
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.704" // same thing
 	
 	// you may put jars on which you depend on in ./libs
     // or you may define them like so..
